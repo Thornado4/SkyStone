@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-@Autonomous(name="Steve Autonomous", group="")
+@Autonomous(name="Mando Autonomous", group="")
 public class SteveAutonomous extends LinearOpMode {
 
     SteveBase steve;
@@ -13,8 +13,12 @@ public class SteveAutonomous extends LinearOpMode {
         steve = new SteveBase(this);
         steve.selection();
         waitForStart();
-        //if(steve.pushingFoundation) steve.scoreFoundation();
-        if (steve.pushingFoundation) steve.turnFoundation();
-
+        if(steve.pushingFoundation) {
+            steve.grabFoundation();
+            steve.turnAndScoreFoundation();
+        }
+        steve.driveToSkybridge();
+        steve.waitForEnd();
+        steve.storeHeading();
     }
 }
